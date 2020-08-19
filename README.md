@@ -2,26 +2,28 @@
 
 ## users テーブル
 
-| Column    | Type    | Options     |
-| --------  | ------  | ----------- |
-| nickname  | string  | null: false |
-| email     | string  | null: false |
-| password  | string  | null: false |
-| name      | string  | null: false |
-| name_kana | string  | null: false |
-| birthday  | integer | null: false |
+| Column          | Type    | Options     |
+| --------------- | ------  | ----------- |
+| nickname        | string  | null: false |
+| email           | string  | null: false |
+| password        | string  | null: false |
+| first_name      | string  | null: false |
+| last_name       | string  | null:false  |
+| first_name_kana | string  | null: false |
+| last_name_kana  | string  | null: false |
+| birthday        | integer | null: false |
 
 ### Association
 
 - has_many :items
-- has_one  :transaction
+- has_one  :item_purchase
 
 ## items テーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | product             | string     | null: false                    |
-| product_description | string     | null: false                    |
+| description         | string     | null: false                    |
 | price               | integer    | null: false                    |
 | category            | integer    | null: false                    |
 | product_condition   | integer    | null: false                    |
@@ -32,10 +34,10 @@
 
 ### Association
 
-- has_one    :transactions
+- has_one    :item_purchase
 - belongs_to :user
 
-## transactions テーブル
+## item_purchases テーブル
 
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
@@ -44,22 +46,22 @@
 
 ### Association
 
-- has_one    :addresses
+- has_one    :address
 - belongs_to :user
 - belongs_to :item
 
 ## addresses テーブル
 
-| Column        | Type       | Options                        |
-| ------------  | ---------- | ------------------------------ |
-| postal_cord   | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
-| city          | string     | null: false                    |
-| house_number  | integer    | null: false                    |
-| building_name | string     |
-| phone_number  | integer    | null: false                    |
-| transaction   | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------  | ---------- | ------------------------------ |
+| postal_cord     | string     | null: false                    |
+| prefecture      | integer    | null: false                    |
+| city            | string     | null: false                    |
+| house_number    | string     | null: false                    |
+| building_name   | string     |
+| phone_number    | string     | null: false                    |
+| item_purchase   | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :transaction
+- belongs_to :item_purchase
