@@ -30,7 +30,7 @@
 | days_until_shipping | integer    | null: false                    |
 | user                | references | null: false, foreign_key: true |
 
-### association
+### Association
 
 - has_one    :transactions
 - belongs_to :user
