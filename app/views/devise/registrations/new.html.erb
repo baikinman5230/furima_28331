@@ -7,8 +7,7 @@
       会員情報入力
     </h1>
   </div>
-
-  <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
+  <%= devise_error_messages!%>
   <% render 'shared/error_messages', model: f.object %>
 
   <div class="form-group">
