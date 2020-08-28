@@ -19,6 +19,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.repuire(:item).permit(:image,:product,:discription,:price,:category_id,:product_condition_id)
+    params.repuire(:item).permit(:image,:product,:discription,:price,:category_id,:product_condition_id,:shipping_fee_burde_id,:shipping_region_id,:days_until_shipping_id)
   end
 end
