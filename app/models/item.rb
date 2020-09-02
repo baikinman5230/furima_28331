@@ -10,13 +10,14 @@ class Item < ApplicationRecord
     validates :image
     validates :product
     validates :discription
-    validates :price
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999	}
     validates :category
     validates :product_condition
     validates :shipping_fee_burde
     validates :shipping_region
     validates :days_until_shipping
   end
+
 
   with_options numericality: { other_than: 1 } do
     validates :category_id
