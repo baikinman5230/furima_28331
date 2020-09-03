@@ -1,4 +1,6 @@
 class TransactionsController < ApplicationController
+  before_action :move_to_index
+
   def index
     @item = Item.find(params[:item_id])
     @transaction = TransactionAddress.new
@@ -29,5 +31,15 @@ class TransactionsController < ApplicationController
       card: transaction_params[:token],
       currency:'jpy'
     )
+  end
+
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    unless current_user.id != @item.user_id
+      redirect_to root_path
+    end
+    unless @item.item_purchase == nil
+      redirect_to root_path
+    end
   end
 end
