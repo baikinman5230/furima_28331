@@ -27,6 +27,12 @@ RSpec.describe TransactionAddress, type: :model do
     expect(@address.errors.full_messages).to include("City can't be blank")
   end
 
+  it "city全角文字以外では購入できない" do
+    @address.city = "nishi-ku"
+    @address.valid?
+    expect(@address.errors.full_messages).to include("City is invalid")
+  end
+
   it "house_numberが空では購入できない" do
     @address.house_number = nil
     @address.valid?
