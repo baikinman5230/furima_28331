@@ -1,13 +1,12 @@
 class TransactionsController < ApplicationController
+  before_action :set_item, only: [:index, :create]
   before_action :move_to_index
 
   def index
-    @item = Item.find(params[:item_id])
     @transaction = TransactionAddress.new
   end
   
   def create
-    @item = Item.find(params[:item_id])
     @transaction = TransactionAddress.new(transaction_params)
     if @transaction.valid?
       pay_item
@@ -31,6 +30,10 @@ class TransactionsController < ApplicationController
       card: transaction_params[:token],
       currency:'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   def move_to_index

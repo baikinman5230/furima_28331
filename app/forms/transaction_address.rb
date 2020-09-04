@@ -8,6 +8,7 @@ class TransactionAddress
     validates :city,         format: {with: /\A[ぁ-んァ-ン一-龥]/}
     validates :house_number
     validates :phone_number, format: {with: /\A\d{11}\z/}
+    validates :token
   end
 
   with_options numericality: {other_than: 1} do
